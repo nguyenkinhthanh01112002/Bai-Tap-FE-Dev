@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function checkDateOfBirth(dateString)
+         {
+        // Biểu thức chính quy để kiểm tra ngày tháng năm sinh
+        const dateRegex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+
+        // Kiểm tra ngày tháng năm sinh với biểu thức chính quy
+        if (dateRegex.test(dateString)) {
+            // Kiểm tra tính hợp lệ của ngày tháng năm
+            const parts = dateString.split("/");
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10);
+            const year = parseInt(parts[2], 10);
+            const date = new Date(year, month - 1, day);
+            if (
+            date.getFullYear() === year &&
+            date.getMonth() === month - 1 &&
+            date.getDate() === day
+            ) {
+            return true;
+            } else {
+            return false;
+            }
+        } else {
+            return false;
+        }
+}
+    </script>
+</head>
+<body>
+    <script>
+        // Kiểm tra định dạng email
+        const email = "example@example.com";
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (emailRegex.test(email)) {
+        console.log(`${email} la dinh dang email hop le`);
+        } else {
+        console.log(`${email} la dinh dang email khong hop le`);
+        }
+        //Để kiểm tra trường mật khẩu phải có ít nhất 8 chữ số, trong đó có ít nhất 1 ký tự hoa, 1 ký thường và 1 số
+        const passWord = "abc12345AB";
+        const passWordRegex =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
+        if(passWordRegex.test(passWord))
+        {
+            console.log(`${passWord} mat khau hop le`);
+        } 
+        else{
+            console.log(`${passWord} mat khau khong hop le`);
+        }
+        //kiem tra so dien thoai co 10 chu so va bat dau bang so 0
+        const phoneNumber = "0905960512"
+        const phoneNumberRegex = /^0\d{9}$/;
+        if(phoneNumberRegex.test(phoneNumber))
+        {
+            console.log(`${phoneNumber} la so dien thoai hop le`);
+        }
+        else{
+            console.log(`${phoneNumber} la so dien thoai khong hop le`);
+        }
+        // Ví dụ sử dụng hàm checkDateOfBirth
+        console.log(checkDateOfBirth("31/12/2000")); // true
+        console.log(checkDateOfBirth("31-12-2000")); // false (không đúng định dạng)
+         // Biểu thức chính quy kiểm tra nickname
+         const regexNickname = /^[a-zA-Z0-9]{4,}$/;
+         //biểu thức cần kiểm tra
+         const nickname = "abc123";
+         if(regexNickname.test(nickname))
+         {
+            console.log(`${nickname} hop le`);
+         }
+         else
+         {
+            console.log(`${nickname} khong hop le`);
+         }
+         // Kiểm tra trường URL, phải có dạng bắt đầu bằng http:// hoặc https:// và kết thúc bằng .xxx
+         const urlRegex = /^https?:\/\/[^\s/$.?#].[^\s]*$/i;
+         //url can kiem tra
+         const url = "http://example.com/test.xxx"
+         if(urlRegex.test(url))
+         {
+            console.log(`${url} la dia chi url hop le`);
+         }
+         else{
+            console.log(`${url} la dia chi url khong hop le`);
+         }
+         //Kiểm tra trường nhập số thẻ ngân hàng có 13 số và phải có dạng 4221xxxx
+         const bankingAccountRegex = /^4221\d{9}$/;
+         //tai khoan can kiem tra
+         const bankingAccount = "4221123456789";
+         if(bankingAccountRegex.test(bankingAccount))
+         {
+            console.log(`${bankingAccount} la tai khoan hop le`);
+         }
+         else
+         {
+            console.log(`${bankingAccount} la tai khoan khong hop le`);
+         }
+    </script>
+</body>
+</html>
